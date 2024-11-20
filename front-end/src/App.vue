@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="ui inverted segment navbar">
+    <div v-if="showNavbar" class="ui inverted segment navbar">
       <div class="ui center aligned container">
         <div class="ui large secondary inverted pointing menu compact">
           <router-link to="/words" exact class="item">
@@ -12,9 +12,15 @@
           <router-link to="/test" class="item">
             <i class="graduation cap icon"></i> Test
           </router-link>
-          <router-link to="/pm76" class="item">
-            <i class="user icon"></i> PM76
+          <router-link to="/user" class="item">
+            <i class="user icon"></i> User
           </router-link>
+          <router-link to="/pm76" class="item">
+            <i class="user secret icon"></i> Authorize
+          </router-link>
+          <div class="right menu">
+            <button class="ui inverted button logout-button" @click="logout">Logout</button>
+          </div>
         </div>
       </div>
     </div>
@@ -32,7 +38,26 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data() {
+    return {
+      showNavbar: true
+    };
+  },
+  watch: {
+    $route(to) {
+      this.showNavbar = to.path !== '/login' && to.path !== '/signup';
+    }
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem('token');
+      this.$router.push('/login');
+    }
+  },
+  created() {
+    this.showNavbar = this.$route.path !== '/login' && this.$route.path !== '/signup';
+  }
 };
 </script>
 
@@ -64,5 +89,18 @@ div.input {
 button.ui.button {
   margin-top: 15px;
   display: block;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
 }
 </style>

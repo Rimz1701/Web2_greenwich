@@ -6,47 +6,83 @@ import Show from './views/Show.vue';
 import Edit from './views/Edit.vue';
 import Test from './views/Test.vue';
 import Pm76 from './views/Pm76.vue';
+import Login from './components/Login.vue';
+import Signup from './components/Signup.vue';
+import User from './views/User.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     linkActiveClass: 'active',
     routes: [
         {
             path: '/',
-            redirect: '/words'
+            redirect: '/login'
         },
         {
-            path:'/words',
+            path: '/login',
+            name: 'Login',
+            component: Login
+        },
+        {
+            path: '/signup',
+            name: 'Signup',
+            component: Signup
+        },
+        {
+            path: '/words',
             name: 'words',
-            component: Words
+            component: Words,
+            meta: { requiresAuth: true }
         },
         {
-            path:'/words/new',
+            path: '/words/new',
             name: 'new-word',
-            component: New
+            component: New,
+            meta: { requiresAuth: true }
         },
         {
-            path:'/words/:id',
+            path: '/words/:id',
             name: 'show',
-            component: Show
+            component: Show,
+            meta: { requiresAuth: true }
         },
         {
-            path:'/words/:id/edit',
+            path: '/words/:id/edit',
             name: 'edit',
-            component: Edit
+            component: Edit,
+            meta: { requiresAuth: true }
         },
         {
-            path:'/test',
+            path: '/test',
             name: 'test',
-            component: Test
+            component: Test,
+            meta: { requiresAuth: true }
         },
         { 
             path: '/pm76',
             name: 'PM76',
-            component: Pm76 
-        }
+            component: Pm76,
+            meta: { requiresAuth: true }
+        },
+        { 
+            path: '/user',
+            name: 'User',
+            component: User,
+            meta: { requiresAuth: true }
+        },
     ]
 });
+
+router.beforeEach((to, from, next) => {
+    const loggedIn = localStorage.getItem('token');
+    if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+        next('/login');
+    } else {
+        next();
+    }
+});
+
+export default router;
