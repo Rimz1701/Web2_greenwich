@@ -13,7 +13,7 @@
             <i class="graduation cap icon"></i> Test
           </router-link>
           <router-link to="/user" class="item">
-            <i class="user icon"></i> User
+            <i class="user icon"></i> Profile
           </router-link>
           <router-link to="/pm76" class="item">
             <i class="user secret icon"></i> Authorize
