@@ -8,10 +8,15 @@ const VocabSchema = new Schema({
     },
     german:{
         type: String,
-        required: 'English word cannot be blank'
+        required: 'German word cannot be blank'
     },
+    korean:{
+        type: String,
+        required: 'Korean word cannot be blank'
+    }
+
 },
-{ collection: 'vocab'}
+{ collection: 'vocab3'}
 );
 
 module.exports = mongoose.model('Vocab', VocabSchema);

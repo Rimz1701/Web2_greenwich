@@ -15,6 +15,12 @@
        </div>
        <input type="text" placeholder="Enter word..." v-model="word.english" />
      </div>
+     <div class="ui labeled input fluid">
+       <div class="ui label">
+         <i class="kr flag"></i> Korean
+       </div>
+       <input type="text" placeholder="Enter word..." v-model="word.korean" />
+     </div>
  
      <button class="positive ui button">Submit</button>
    </form>
@@ -30,7 +36,8 @@
        default: () =>{
         return {
           english: '',
-          german: ''
+          german: '',
+          korean: '',
         };
        }
      }
@@ -42,7 +49,7 @@
    },
    methods: {
      onSubmit: function() {
-       if (this.word.english === '' || this.word.english === ''){
+       if (this.word.english === '' || this.word.english === '' || this.word.korean === ''){
         this.errorsPresent = true;
        } else{
         this.$emit('createOrUpdate', this.word);

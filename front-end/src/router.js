@@ -5,6 +5,7 @@ import New from './views/New.vue';
 import Show from './views/Show.vue';
 import Edit from './views/Edit.vue';
 import Test from './views/Test.vue';
+import Pm76 from './views/Pm76.vue';
 
 Vue.use(Router);
 
@@ -41,6 +42,11 @@ export default new Router({
             path:'/test',
             name: 'test',
             component: Test
+        },
+        { 
+            path: '/pm76',
+            name: 'PM76',
+            component: Pm76 
         }
     ]
 });
