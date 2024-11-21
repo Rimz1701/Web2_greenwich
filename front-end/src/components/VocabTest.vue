@@ -19,7 +19,7 @@
           <div class="ui label">
             <i class="kr flag"></i> Korean
           </div>
-          <input type="text" placeholder="Enter word..." v-model="english" :disabled="testOver" autocomplete="off" />
+          <input type="text" placeholder="Enter word..." v-model="korean" :disabled="testOver" autocomplete="off" />
         </div>
   
         <button class="positive ui button" :disabled="testOver">Submit</button>
@@ -47,6 +47,7 @@
         result: '',
         resultClass: '',
         english: '',
+        korean:'',
         score: 0,
         testOver: false
       };
@@ -58,7 +59,7 @@
     },
     methods: {
       onSubmit: function() {
-        if (this.english === this.currWord.english) {
+        if (this.english === this.currWord.english && this.korean === this.currWord.korean) {
           this.flash('Correct!', 'success', { timeout: 1000 });
           this.score += 1;
         } else {
@@ -67,6 +68,7 @@
         }
   
         this.english = '';
+        this.korean ='';
         this.randWords.shift();
   
         if (this.randWords.length === 0) {
