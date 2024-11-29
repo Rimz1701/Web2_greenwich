@@ -15,11 +15,16 @@
       'word-form': WordForm
     },
     methods: {
-        createOrUpdate: async function(word) {
+        async createOrUpdate(word) {
+          try {
         const res = await api.createWord(word);
         this.flash('Word created', 'success');
         this.$router.push(`/words/${res._id}`);
+          } catch (error) {
+            console.error('Error creating word:', error);
+          }
       }
     }
   };
   </script>
+

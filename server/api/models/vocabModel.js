@@ -17,18 +17,13 @@ const VocabSchema = new Schema({
     createdAt: { 
         type: Date, 
         default: Date.now 
-    }, 
-    updatedAt: { 
-        type: Date, 
-        default: Date.now 
-    }
-
+    },
 },
 { collection: 'vocab3'}
 );
 
 VocabSchema.pre('save', function(next) { 
-    this.updatedAt = Date.now(); 
+    this.createdAt = Date.now(); 
     next(); 
 });
 
