@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Le Nguyen Khang</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div class="nav-bar"></div>
+
+    <div id="app">
+
+      <div class="cart">
+        <p>Cart({{ cart.length }})</p>
+      </div>
+
+    <product :premium="premium" @add-to-cart="updateCart"></product>
+
+    <!-- Challenge Task 8 -->
+    <!-- <product-details :details="details"></product-details> -->
+
+        <!-- Challenge Task 2 -->
+        <!-- <a v-bind:href="link"> Click the link here</a> -->
+
+        <!-- Challenge Task 3 -->
+        <!-- <p v-if="inStock">On Sale!</p> -->
+
+        <!-- Challenge Task 6 -->
+        <!-- <p v-else :class="{ outOfStock: !inStock }" >Out of Stock</p> -->
+
+        <!-- Challenge Task 4 -->
+        <!-- <ul>
+          <li v-for="size in sizes">{{ size }}</li>
+        </ul>         -->
+
+        <!-- Challenge Task 5 -->
+        <!-- <button v-on:click="decrementCart">Remove from Cart</button> -->
+
+      </div> 
+
+      </div>
+    </div>
+
+    <!-- Import Vue.js -->
+    <!-- Import Js -->
+    <script src="main.js"></script>
+  </body>
+</html>
